@@ -109,17 +109,19 @@ class AnalisadorLexico():
 
         while linha_programa:
             i = 0
+            erroLex = False
             tamanho_linha = len(linha_programa)
+            arquivo_temp = []
 
-            while i < tamanho_linha:
+            while (i < tamanho_linha and not erroLex):
                 caracter_atual = linha_programa[i]
 
                 if (self.ehDelimitador(caracter_atual)):
-                    arquivo_saida.write(self.qualTokenDelimitador(
+                    arquivo_temp.append(self.qualTokenDelimitador(
                         caracter_atual)+'_'+caracter_atual+'->'+str(numero_linha)+'\n')
 
                 elif self.ehOperador(caracter_atual):
-                    arquivo_saida.write(self.qualTokenOperador(
+                    arquivo_temp.append(self.qualTokenOperador(
                         caracter_atual)+'_'+caracter_atual+'->'+str(numero_linha)+'\n')
 
                 # ===================================================================================
@@ -146,23 +148,26 @@ class AnalisadorLexico():
                                 i += 1
                                 caracter_atual = linha_programa[i]
                                 if(caracter_atual == '.'):
+                                    erroLex = True
                                     arquivo_saida.write(
                                         'tok500_Erro Lexico - Numero mal formado - Linha: %d\n' % numero_linha)
 
                         else:
+                            erroLex = True
                             arquivo_saida.write(
                                 'tok500_Erro Lexico - Numero mal formado - Linha: %d\n' % numero_linha)
 
                         if (j > 0):
                             i -= 1
-                            arquivo_saida.write(
+                            arquivo_temp.append(
                                 'tok301_'+string_temp+'->'+str(numero_linha)+'\n')
                         else:
+                            erroLex = True
                             arquivo_saida.write(
                                 'tok500_Erro Lexico - Numero mal formado - Linha: %d\n' % numero_linha)
                     else:
                         i -= 1
-                        arquivo_saida.write(
+                        arquivo_temp.append(
                             'tok300_'+string_temp+'->'+str(numero_linha)+'\n')
                 # ===================================================================================
 
@@ -179,19 +184,24 @@ class AnalisadorLexico():
                         i += 1
 
                     if (self.ehReservada(string_temp)):
-                        arquivo_saida.write(self.qualTokenReservada(
+                        arquivo_temp.append(self.qualTokenReservada(
                             string_temp)+'_'+string_temp+'->'+str(numero_linha)+'\n')
                     else:
+                        erroLex = True
                         arquivo_saida.write(
                             'tok500_Erro Lexico - Palavra reservada invalida - Linha: %d\n' % numero_linha)
 
                 elif caracter_atual != '\n' and caracter_atual != ' ' and caracter_atual != '\t' and caracter_atual != '\r':
+                    erroLex = True
                     arquivo_saida.write(
                         'tok500_Erro Lexico - Caracter Invalido: ' + caracter_atual + ' - linha: %d\n' % numero_linha)
 
                 i += 1
 
-            arquivo_saida.write("\n")
+            if (not erroLex):
+                for index in arquivo_temp:
+                    arquivo_saida.write(index)
+            arquivo_temp = []
             linha_programa = arquivo.readline()
             numero_linha += 1
 
