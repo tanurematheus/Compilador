@@ -45,7 +45,7 @@ class AnalisadorSintatico():
                     self.tem_erro = True
                     self.arquivo_saida.write('Erro Lexico\n')
 
-                elif(anterior == ""):
+                elif(anterior == "" or 'tok200' in anterior):
                     if('tok3' in self.tokens[self.i] or 'tok4' in self.tokens[self.i] or 'tok200' in self.tokens[self.i] or 'tok101' in self.tokens[self.i]):
                         if('tok200' in self.tokens[self.i]):
                             count_de_parenteses = count_de_parenteses + 1
@@ -54,7 +54,7 @@ class AnalisadorSintatico():
                         self.arquivo_saida.write(
                             'Erro Sintatico - Inicio de programa invalido \n')
 
-                elif('tok3' in anterior or 'tok403' in anterior):
+                elif('tok3' in anterior or 'tok403' in anterior or 'tok201' in anterior):
                     if(not ('tok1' in self.tokens[self.i] or 'tok201' in self.tokens[self.i])):
                         self.tem_erro = True
                         self.arquivo_saida.write(
@@ -73,7 +73,7 @@ class AnalisadorSintatico():
                             self.arquivo_saida.write(
                                 'Erro Sintatico - Esperado um numero ou ( apos um operador \n')
                         elif ('tok200' in self.tokens[self.i]):
-                            count_de_parenteses = count_de_parenteses - 1
+                            count_de_parenteses = count_de_parenteses + 1
 
                 elif ('tok4' in anterior):
                     if not 'tok200' in self.tokens[self.i]:

@@ -11,4 +11,4 @@ Cadeia de tokens ok
 Erro Lexico
 Cadeia de tokens ok
 Erro Sintatico - Inicio de programa invalido 
-Cadeia de tokens ok
+Erro Sintatico - Esperado um operador ou ) apos um numero 
