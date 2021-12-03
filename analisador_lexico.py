@@ -22,9 +22,9 @@
 #   tok403 - pi
 
 # tok500 - ERROS LEXICOS
-# Simbolo nao pertencente ao conjunto de simbolos terminais da linguagem
+# Palavra reservada invalida
+# Caracter invalido
 # Numero mal formado
-# Fim de arquivo inesperado (comentario de bloco nao fechado)
 
 import sys
 import os.path
@@ -150,12 +150,12 @@ class AnalisadorLexico():
                                 if(caracter_atual == '.'):
                                     erroLex = True
                                     arquivo_saida.write(
-                                        'tok500_Erro Lexico - Numero mal formado - Linha: %d\n' % numero_linha)
+                                        'tok500_Erro Lexico - Numero mal formado - Linha->%d\n' % numero_linha)
 
                         else:
                             erroLex = True
                             arquivo_saida.write(
-                                'tok500_Erro Lexico - Numero mal formado - Linha: %d\n' % numero_linha)
+                                'tok500_Erro Lexico - Numero mal formado - Linha->%d\n' % numero_linha)
 
                         if (j > 0):
                             i -= 1
@@ -164,7 +164,7 @@ class AnalisadorLexico():
                         else:
                             erroLex = True
                             arquivo_saida.write(
-                                'tok500_Erro Lexico - Numero mal formado - Linha: %d\n' % numero_linha)
+                                'tok500_Erro Lexico - Numero mal formado - Linha->%d\n' % numero_linha)
                     else:
                         i -= 1
                         arquivo_temp.append(
@@ -189,12 +189,12 @@ class AnalisadorLexico():
                     else:
                         erroLex = True
                         arquivo_saida.write(
-                            'tok500_Erro Lexico - Palavra reservada invalida - Linha: %d\n' % numero_linha)
+                            'tok500_Erro Lexico - Palavra reservada invalida - Linha->%d\n' % numero_linha)
 
                 elif caracter_atual != '\n' and caracter_atual != ' ' and caracter_atual != '\t' and caracter_atual != '\r':
                     erroLex = True
                     arquivo_saida.write(
-                        'tok500_Erro Lexico - Caracter Invalido: ' + caracter_atual + ' - linha: %d\n' % numero_linha)
+                        'tok500_Erro Lexico - Caracter Invalido: ' + caracter_atual + ' - linha->%d\n' % numero_linha)
 
                 i += 1
 

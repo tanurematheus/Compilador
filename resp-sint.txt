@@ -1,0 +1,14 @@
+Erro Lexico
+Erro Sintatico - Inicio de programa invalido 
+Erro Sintatico - Esperado um operador ou ) apos um numero 
+Erro Sintatico - Nao pode existir informacao depois de fatorial 
+Erro Sintatico - Esperado um numero ou ( apos um operador 
+Erro Sintatico - Esperado um ( apos uma palavra reservada 
+Erro Sintatico - Faltou algum )
+Cadeia de tokens ok
+Cadeia de tokens ok
+Cadeia de tokens ok
+Erro Lexico
+Cadeia de tokens ok
+Erro Sintatico - Inicio de programa invalido 
+Cadeia de tokens ok

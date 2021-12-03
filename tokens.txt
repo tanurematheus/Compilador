@@ -1,12 +1,36 @@
-tok500_Erro Lexico - Caracter Invalido: a - linha: 1
-tok300_5963->2
-tok103_/->2
-tok300_5656->2
-tok300_654->3
-tok106_!->3
-tok400_cos->4
-tok200_(->4
-tok300_2->4
-tok201_)->4
-tok500_Erro Lexico - Caracter Invalido: f - linha: 5
+tok500_Erro Lexico - Caracter Invalido: a - linha->1
+tok102_*->2
+tok300_537->2
+tok300_6798->3
+tok300_629->3
+tok300_545->4
+tok106_!->4
+tok300_5->4
+tok300_5963->5
+tok103_/->5
+tok102_*->5
+tok300_5656->5
+tok402_tg->6
+tok300_54->6
+tok400_cos->7
+tok200_(->7
+tok300_123->7
+tok403_pi->8
+tok101_-->8
+tok300_6->8
+tok300_654->9
+tok106_!->9
+tok400_cos->10
+tok200_(->10
+tok300_2->10
+tok201_)->10
+tok500_Erro Lexico - Caracter Invalido: f - linha->11
+tok101_-->12
+tok300_54->12
+tok102_*->13
+tok300_423->13
+tok200_(->14
+tok300_678->14
+tok201_)->14
+tok300_123->14
 $
