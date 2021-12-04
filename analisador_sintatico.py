@@ -51,14 +51,22 @@ class AnalisadorSintatico():
                             count_de_parenteses = count_de_parenteses + 1
                     else:
                         self.tem_erro = True
-                        self.arquivo_saida.write(
-                            'Erro Sintatico - Inicio de programa invalido \n')
+                        if 'tok2' in anterior:
+                            self.arquivo_saida.write(
+                                'Erro Sintatico - Entrada invalida apos ( \n')
+                        else:
+                            self.arquivo_saida.write(
+                                'Erro Sintatico - Inicio de programa invalido \n')
 
                 elif('tok3' in anterior or 'tok403' in anterior or 'tok201' in anterior):
                     if(not ('tok1' in self.tokens[self.i] or 'tok201' in self.tokens[self.i])):
                         self.tem_erro = True
-                        self.arquivo_saida.write(
-                            'Erro Sintatico - Esperado um operador ou ) apos um numero \n')
+                        if 'tok2' in anterior:
+                            self.arquivo_saida.write(
+                                'Erro Sintatico - Esperado um operador ou ) apos um ) \n')
+                        else:
+                            self.arquivo_saida.write(
+                                'Erro Sintatico - Esperado um operador ou ) apos um numero \n')
                     elif ('tok201' in self.tokens[self.i]):
                         count_de_parenteses = count_de_parenteses - 1
 
